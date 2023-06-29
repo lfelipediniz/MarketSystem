@@ -38,12 +38,6 @@ make
 2. Execute the program (with either of the two commands)
 
 ```bash
-<<<<<<< HEAD
-=======
-./marketsystem
-```
-```bash
->>>>>>> refs/remotes/origin/main
 make run
 ```
 
