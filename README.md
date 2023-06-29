@@ -53,34 +53,34 @@ To use MarketSystem, follow the instructions below:
 #### Commands and outputs from the program
    System functionalities must be requested by means of commands followed by the required data. Commands are representedby two capital letters. The commands that system must recognize are specified below. The **_** symbol denotes blank space.
 
-   1. Insere produto
-      ```c
-      IP_<nome>_<quantidade>_<preço>
-      ```
-   2. Aumenta estoque
-      ```c
-      AE_<código>_<quantidade>
-      ```
-   3. Modifica preço
-      ```c
-      MP_<código>_<preço>
-      ```
-   4. Venda
-      ```c
-      VE_<código>_<código>_..._<código>_<-1>
-      ```
-   5. Consulta estoque
-      ```c
-      CE
-      ```
-   6. Consulta saldo
-      ```c
-      CS
-      ```
-   7. Consulta saldo
-      ```c
-      FE
-      ```
+1. Insert product
+   ```c
+   IP_<name>_<quantity>_<price>
+   ```
+2. Increase stock
+   ```c
+   AE_<code>_<quantity>
+    ```
+3. Modify price
+   ```c
+   MP_<code>_<price>
+   ```
+4. Sale
+   ```c
+   VE_<code>_<code>_..._<code>_<-1>
+   ```
+5. Inventory consultation
+   ```c
+   CE
+   ```
+6. Balance inquiry
+   ```c
+   CS
+   ```
+7. Balance inquiry
+   ```c
+   FE
+   ```
 
 ### Authors
 
