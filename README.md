@@ -41,7 +41,7 @@ make
 ./marketsystem
 ```
 
-or you can use:
+  or you can use:
 
 ```bash
 make run
@@ -60,15 +60,14 @@ two capital letters. The commands that system must recognize are specified below
 
 1. Insert product
 
-```c
-IP_<name>_<quantity>_<price>
-            ```
-
-            2. Increase stock
-
-            ```c
-            AE_<code>_<quantity>
+   ```c
+   IP_<name>_<quantity>_<price>
    ```
+2. Increase stock
+
+      ```c
+      AE_<code>_<quantity>
+      ```
 
 3. Modify price
 
