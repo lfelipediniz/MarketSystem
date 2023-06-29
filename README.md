@@ -38,12 +38,6 @@ make
 2. Execute the program
 
 ```bash
-./marketsystem
-```
-
-or you can use:
-
-```bash
 make run
 ```
 
