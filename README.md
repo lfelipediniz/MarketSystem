@@ -35,14 +35,11 @@ cd MarketSystem
 make
 ```
 
-2. Execute the program
+2. Execute the program (with either of the two commands)
 
 ```bash
 ./marketsystem
 ```
-
-  or you can use:
-
 ```bash
 make run
 ```
