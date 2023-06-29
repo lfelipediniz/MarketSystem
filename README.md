@@ -18,7 +18,7 @@ To use MarketSystem, follow the instructions below:
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/MarketSystem.git
+git clone https://github.com/lfelipediniz/MarketSystem.git
 ```
 
 2. Navigate to the project directory
