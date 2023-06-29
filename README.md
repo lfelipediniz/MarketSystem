@@ -18,7 +18,7 @@ To use MarketSystem, follow the instructions below:
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/MarketSystem.git
+git clone https://github.com/lfelipediniz/MarketSystem.git
 ```
 
 2. Navigate to the project directory
@@ -35,9 +35,15 @@ cd MarketSystem
 make
 ```
 
-2. Execute the program
+2. Execute the program (with either of the two commands)
 
 ```bash
+<<<<<<< HEAD
+=======
+./marketsystem
+```
+```bash
+>>>>>>> refs/remotes/origin/main
 make run
 ```
 
@@ -54,15 +60,14 @@ two capital letters. The commands that system must recognize are specified below
 
 1. Insert product
 
-```c
-IP_<name>_<quantity>_<price>
-            ```
-
-            2. Increase stock
-
-            ```c
-            AE_<code>_<quantity>
+   ```c
+   IP_<name>_<quantity>_<price>
    ```
+2. Increase stock
+
+      ```c
+      AE_<code>_<quantity>
+      ```
 
 3. Modify price
 
