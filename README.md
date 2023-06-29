@@ -89,7 +89,6 @@ Names   | USP Number
 Luiz Felipe Diniz Costa | 13782032
 nome | nusp
 nome | nusp
-nome | nusp
 
 Project for the course "Introduction to Computer Science 1" at the Institute of Mathematics and Computer Science, University of Sao Paulo
 
