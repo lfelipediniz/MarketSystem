@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-   // Struct do Produto
+   // struct do Produto
    unsigned int id;
    char name[80];
    unsigned int qtd;
@@ -11,7 +11,7 @@ typedef struct {
 } Product;
 
 typedef struct {
-   // Struct do Estoque
+   // struct do Estoque
 
    unsigned int qtd;
    unsigned int capacity;
@@ -38,9 +38,6 @@ void insertProduct(Stock* storage) {
    storage->products[storage->qtd].id = storage->qtd;
 
    storage->qtd++;
-
-   
-
 }
 
 void increaseStock(Stock* storage) {
@@ -66,7 +63,7 @@ int main() {
    printf("Espaco atual do estoque: ");
    scanf("%u", &stockSize);
 
-   // Alocação dinâmica do estoque
+   // alocação dinâmica do estoque que contém os produtos
    stockStorage.products = (Product*)malloc(stockSize * sizeof(Product));
    if (stockStorage.products == NULL) {
       printf("Erro na alocacao de memoria.\n");
@@ -76,10 +73,10 @@ int main() {
    stockStorage.capacity = stockSize;
    stockStorage.qtd = 0;
 
-   // Loop infinito dos comandos, para só quando o usuário digitar "FE"
+   // loop infinito dos comandos, para só quando o usuário digitar "FE"
    // (Finalizar Execução)
    while (1) {
-      printf("Comando (IP/AE/FE): ");
+      //colocar o comando
       scanf("%s", command);
 
       if (strcmp(command, "IP") == 0) {
@@ -87,13 +84,13 @@ int main() {
       } else if (strcmp(command, "AE") == 0) {
          increaseStock(&stockStorage);
       } else if (strcmp(command, "aa") == 0) {
-         displayProducts(&stockStorage);
+         displayProducts(&stockStorage); // só para testar, dá pra tirar dps
       } else if (strcmp(command, "FE") == 0) {
-         break;  // Sai do loop
+         break;  // sai do loop
       }
    }
 
-   // Libera a memória alocada para o estoque
+   // libera a memória alocada para o estoque
    free(stockStorage.products);
 
    return 0;
