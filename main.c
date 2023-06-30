@@ -23,7 +23,7 @@ void insertProduct(Stock* storage) {
    unsigned int qtd;
    float price;
 
-   scanf(" %[^\n]", name);
+   scanf("%s", name);
    scanf("%u", &qtd);
    scanf("%f", &price);
 
@@ -39,17 +39,22 @@ void insertProduct(Stock* storage) {
 
    storage->qtd++;
 
-   printf("Produto inserido com sucesso!\n");
+   
+
 }
 
-void increaseStock() {}
+void increaseStock(Stock* storage) {
+   unsigned int id, qtd;
+   scanf("%u %u", &id, &qtd);
+   storage->products[id].qtd += qtd;
+}
 
+//usando apenas para teste
 void displayProducts(Stock* storage) {
    int i;
 
    for (i = 0; i < storage->qtd; i++) {
-      printf("%u %s %u %f", storage->products[i].id, storage->products[i].name,
-             storage->products[i].price, storage->products[i].qtd);
+      printf("%u %s %u %f", storage->products[i].id, storage->products[i].name, storage->products[i].qtd, storage->products[i].price);
    }
 }
 
@@ -80,7 +85,7 @@ int main() {
       if (strcmp(command, "IP") == 0) {
          insertProduct(&stockStorage);
       } else if (strcmp(command, "AE") == 0) {
-         increaseStock();
+         increaseStock(&stockStorage);
       } else if (strcmp(command, "aa") == 0) {
          displayProducts(&stockStorage);
       } else if (strcmp(command, "FE") == 0) {
