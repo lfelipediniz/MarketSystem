@@ -18,7 +18,7 @@ typedef struct {
    Product* products;
 } Stock;
 
-void insertProduct(Stock * storage) {
+void insertProduct(Stock* storage) {
    char name[80];
    unsigned int qtd;
    float price;
@@ -27,8 +27,8 @@ void insertProduct(Stock * storage) {
    scanf("%u", &qtd);
    scanf("%f", &price);
 
-   if(storage->qtd == storage->capacity) {
-      storage->products =  realloc(storage->products, storage->capacity * 2);
+   if (storage->qtd == storage->capacity) {
+      storage->products = realloc(storage->products, storage->capacity * 2);
       storage->capacity *= 2;
    }
 
@@ -37,7 +37,6 @@ void insertProduct(Stock * storage) {
    storage->products[storage->qtd].price = price;
    storage->products[storage->qtd].id = storage->qtd;
 
-
    storage->qtd++;
 
    printf("Produto inserido com sucesso!\n");
@@ -45,8 +44,13 @@ void insertProduct(Stock * storage) {
 
 void increaseStock() {}
 
-void displayProducts() {
+void displayProducts(Stock* storage) {
+   int i;
 
+   for (i = 0; i < storage->qtd; i++) {
+      printf("%u %s %u %f", storage->products[i].id, storage->products[i].name,
+             storage->products[i].price, storage->products[i].qtd);
+   }
 }
 
 int main() {
@@ -58,7 +62,7 @@ int main() {
    scanf("%u", &stockSize);
 
    // Alocação dinâmica do estoque
-    stockStorage.products = (Product*)malloc(stockSize * sizeof(Product));
+   stockStorage.products = (Product*)malloc(stockSize * sizeof(Product));
    if (stockStorage.products == NULL) {
       printf("Erro na alocacao de memoria.\n");
       return 1;
