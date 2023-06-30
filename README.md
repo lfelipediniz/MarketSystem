@@ -95,7 +95,7 @@ two capital letters. The commands that system must recognize are specified below
 
 #### Test case
 
-<table>
+<table align="center">
     <thead>
         <tr>
             <th>Input</th>
