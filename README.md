@@ -143,6 +143,6 @@ Total: 6.50</br>
 | :---------------------------| ---------- |
 | Luiz Felipe Diniz Costa     | 13782032   |
 | Hélio Márcio Cabral Santos  | 14577862   |
-| nome                        | nusp       |
+| João Vitor Alves de Medeiros| 13726762   |
 
 Project for the course "Introduction to Computer Science 1" at the Institute of Mathematics and Computer Science, University of Sao Paulo
