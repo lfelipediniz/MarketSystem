@@ -104,8 +104,8 @@ void inventoryConsultation(Stock *storage) {
 
 int main() {
     FILE *fp;
-    unsigned int stockSize;
-    int balance;
+    unsigned int stockSize; //primeiro número do arquivo
+    int balance; //segundo número do arquivo
     char command[3];
     Stock stockStorage;
 
@@ -117,6 +117,7 @@ int main() {
         scanf("%u", &stockSize);
         scanf("%d", &balance);
 
+        // só para ser possível alocar a memoria nos testes, deve ser atualizado com os dados do fim do dia
         fprintf(fp, "%u %d", stockSize, balance);
     }else{
         fscanf(fp, "%u %d", &stockSize, &balance);
