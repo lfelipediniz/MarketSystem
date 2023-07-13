@@ -34,7 +34,7 @@ void insertProduct(Stock *storage) {
     scanf("%f", &price);
 
     if (storage->qtd == storage->capacity) {
-        storage->products = realloc(storage->products, storage->capacity * 2);
+        storage->products = (Product *)realloc(storage->products, storage->capacity * 2);
         storage->capacity *= 2;
     }
 
@@ -60,10 +60,10 @@ void modifyPrice(Stock *storage) {
 }
 
 //Não coloquei para printar codigo de erro pq as saidas tem que ser exatamente igual o esperado
-//A função retorna o dinheiro ganho com as vendas, para facilitar na hora de fazer o comando CS
+//A função retorna o saldo depois das vendas, para facilitar na hora de fazer o comando CS
 float sale(Stock *storage) {
     int id = 0;
-    float total = 0;
+    float saldo = 0;
     float dinheiroVenda = 0;
 
     while (1) {
@@ -71,30 +71,28 @@ float sale(Stock *storage) {
 
         if (id == -1)
             break;
-        else if (id >= 0 && storage->products[(unsigned) id].qtd > 0 && id < storage->qtd) {
+        else if (id >= 0 && storage->products[(unsigned) id].qtd > 0 && id < (int)storage->qtd) {
             storage->products[(unsigned) id].qtd -= 1;
             dinheiroVenda += storage->products[(unsigned) id].price;
+            printf("%s %.2f \n", storage->products[id].name, storage->products[id].price);
+            saldo += storage->products[id].price * (float) storage->products[id].qtd;
         }
     }
 
-    for (int i = 0; i < storage->qtd; i++) {
-        printf("%s %.2f \n", storage->products[i].name, storage->products[i].price);
-        total += storage->products[i].price * (float) storage->products[i].qtd;
-    }
-    printf("Total: %.2f\n", total);
+    printf("Total: %.2f\n", dinheiroVenda);
 
     for (int j = 0; j < 50; j++)
         printf("-");
 
     printf("\n");
 
-    return dinheiroVenda;
+    return saldo;
 }
 
 void inventoryConsultation(Stock *storage) {
     int i;
 
-    for (i = 0; i < storage->qtd; i++) {
+    for (i = 0; i < (int)storage->qtd; i++) {
         printf("%u %s %u \n", storage->products[i].id, storage->products[i].name, storage->products[i].qtd);
     }
 
@@ -105,13 +103,24 @@ void inventoryConsultation(Stock *storage) {
 }
 
 int main() {
+    FILE *fp;
     unsigned int stockSize;
+    int balance;
     char command[3];
     Stock stockStorage;
 
-    //Acho que não é para printar nada nesse começo
-    //printf("Espaco atual do estoque: ");
-    scanf("%u", &stockSize);
+    fp = fopen("MarketFile", "r+");
+
+    // checar se existe o arquivo do dia anterior
+    if(fp == NULL){
+        fp = fopen("MarketFile","w");
+        scanf("%u", &stockSize);
+        scanf("%d", &balance);
+
+        fprintf(fp, "%u %d", stockSize, balance);
+    }else{
+        fscanf(fp, "%u %d", &stockSize, &balance);
+    }
 
     // alocação dinâmica do estoque que contém os produtos
     stockStorage.products = (Product *) malloc(stockSize * sizeof(Product));
@@ -147,5 +156,6 @@ int main() {
     // libera a memória alocada para o estoque
     free(stockStorage.products);
 
+    fclose(fp);
     return 0;
 }
