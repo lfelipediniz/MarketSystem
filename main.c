@@ -18,9 +18,9 @@ typedef struct {
 void insertProduct(Stock *storage);
 void increaseStock(Stock *storage);
 void modifyPrice(Stock *storage);
-void sale(Stock *storage);
+float sale(Stock *storage);
 void inventoryConsultation(Stock *storage);
-void checkBalance(float *cash);
+void checkBalance(float cash);
 void finalizeDay(Stock *storage, float cash);
 
 // inserir um produto no estoque
@@ -64,7 +64,7 @@ void modifyPrice(Stock *storage) {
 }
 
 // fazer a venda
-void sale(Stock *storage) {
+float sale(Stock *storage) {
    int id = 0;
    float total = 0;
 
@@ -85,6 +85,8 @@ void sale(Stock *storage) {
    for (int j = 0; j < 50; j++) printf("-");
 
    printf("\n");
+
+   return total;
 }
 
 // consulta o estoque
@@ -99,14 +101,14 @@ void inventoryConsultation(Stock *storage) {
 }
 
 // consulta o saldo do caixa
-void checkBalance(float *cash) {
-   scanf("%f", cash);
+void checkBalance(float cash) {
+   printf("Saldo: %.2f\n", cash);
 }
 
 // finaliza o dia e grava as informações no arquivo binário
 void finalizeDay(Stock *storage, float cash) {
    FILE *file = fopen("dados.bin", "wb");
-
+   
    if (file == NULL) {
       printf("Erro ao abrir o arquivo.\n");
       return;
@@ -126,15 +128,17 @@ int main() {
    unsigned int stockSize;
    char command[3];
    Stock stockStorage;
-   float cash;
+   float cash = 0;
 
    FILE *file = fopen("dados.bin", "rb");
 
    if (file != NULL) {
       // lê o saldo e a quantidade de produtos do arquivo
+      
       fread(&cash, sizeof(float), 1, file);
       fread(&stockSize, sizeof(unsigned int), 1, file);
 
+      
       // aloca a memória pro estoque
       stockStorage.products = (Product *)malloc(stockSize * sizeof(Product));
       if (stockStorage.products == NULL) {
@@ -171,18 +175,18 @@ int main() {
       } else if (strcmp(command, "MP") == 0) {
          modifyPrice(&stockStorage);
       } else if (strcmp(command, "VE") == 0) {
-         sale(&stockStorage);
+         cash += sale(&stockStorage);
       } else if (strcmp(command, "CE") == 0) {
          inventoryConsultation(&stockStorage);
       } else if (strcmp(command, "CS") == 0) {
-         checkBalance(&cash);
-         printf("Saldo: %.2f\n", cash);
+         checkBalance(cash);
          for (int j = 0; j < 50; j++) printf("-");
          printf("\n");
       } else if (strcmp(command, "FE") == 0) {
          finalizeDay(&stockStorage, cash);
          break;
       }
+      
    }
 
    free(stockStorage.products);
