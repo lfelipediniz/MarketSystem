@@ -1,3 +1,10 @@
+/*GRUPO:
+Luiz Felipe Diniz Costa - 13782032
+Hélio Márcio Cabral Santos - 14577862
+João Vitor Alves de Medeiros - 13726762
+
+github: https://github.com/lfelipediniz/MarketSystem
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -35,7 +42,7 @@ void insertProduct(Stock *storage) {
 
    // vê se o estoque está cheio e realoca espaço quando necessário
    if (storage->qtd == storage->capacity) {
-      storage->products = realloc(storage->products, (storage->capacity + 10) * sizeof(Product));
+      storage->products = (Product *)realloc(storage->products, (storage->capacity + 10) * sizeof(Product));
       storage->capacity += 10;
    }
 
@@ -74,7 +81,7 @@ float sale(Stock *storage) {
 
       if (id == -1)
          break;
-      else if (id >= 0 && id < storage->qtd && storage->products[id].qtd > 0) {
+      else if (id >= 0 && id < (int)storage->qtd && storage->products[id].qtd > 0) {
          printf("%s %.2f\n", storage->products[id].name, storage->products[id].price);
          total += storage->products[id].price;
          storage->products[id].qtd--;
@@ -91,7 +98,7 @@ float sale(Stock *storage) {
 
 // consulta o estoque
 void inventoryConsultation(Stock *storage) {
-   for (int i = 0; i < storage->qtd; i++) {
+   for (int i = 0; i < (int)storage->qtd; i++) {
       printf("%u %s %u\n", storage->products[i].id, storage->products[i].name, storage->products[i].qtd);
    }
 
@@ -153,6 +160,7 @@ int main() {
    } else {
       // se o arquivo não existe, lê o espaço atual do estoque do console
       scanf("%u", &stockSize);
+      scanf("%f", &cash);
 
       // aloca memória pro estoque
       stockStorage.products = (Product *)malloc(stockSize * sizeof(Product));
