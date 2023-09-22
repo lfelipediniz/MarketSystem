@@ -93,7 +93,7 @@ two capital letters. The commands that system must recognize are specified below
    FE
    ```
 
-#### Test case
+### Test case
 
 <table align="center">
     <thead>
@@ -145,4 +145,4 @@ Total: 6.50</br>
 | Hélio Márcio Cabral Santos  | 14577862   |
 | João Vitor Alves de Medeiros| 13726762   |
 
-Project for the course "Introduction to Computer Science 1" at the Institute of Mathematics and Computer Science, University of Sao Paulo
+Project for the course ["Introduction to Computer Science 1"](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=SCC0221) at the Institute of Mathematics and Computer Science, University of Sao Paulo
